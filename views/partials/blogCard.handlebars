@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between flex-wrap">
+    <h2 id="currentTitle">{{title}}</h2>
+    <p class="align-self-end">Posted by
+      {{user.username}}
+      on
+      {{toDate createdAt}}</p>
+  </div>
+  <div class="card-body">
+    <p id="currentText" class="card-text">{{blog}}</p>
+  </div>
+  {{#if edit}}
+    <div class="card-footer">
+      <button
+        id="edit-btn"
+        data-blogid="{{id}}"
+        type="button"
+        class="btn btn-danger"
+        data-bs-target="#editBlog-modal"
+        data-bs-toggle="modal"
+      >Edit</button>
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,9 @@
+.cardLink:link, .cardLink:visited, .cardLink:hover, .cardLink:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+}

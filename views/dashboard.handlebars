@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="container rounded bg-secondary mt-5">
+
+        <h1 class="p-3">Welcome {{user.username}}</h1>
+        <button class="p-2 m-3 btn btn-dark" data-bs-target="#postBlog-modal" data-bs-toggle="modal">Post Blog</button>
+
+    </div>
+
+    <div class="mt-5">
+        {{#each blogPosts as | blog |}}
+        <a class="cardLink" href="/post/{{id}}">
+            {{> blogCard}}
+        </a>
+        {{/each}}
+    </div>
+
+</div>

@@ -1,0 +1,67 @@
+{{! Card with form to add comment }}
+{{#if isLoggedIn}}
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Add a Comment!</h5>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="mb-3 d-flex flex-column">
+          <label for="comment-input" class="form-label">Comment</label>
+          <textarea name="commentInput" id="comment-input" rows="6"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <div class="modal-footer d-flex justify-content-between">
+        <button
+          id="comment-btn"
+          data-blogid="{{blogPost.id}}"
+          type="submit"
+          class="btn btn-dark"
+        >Comment</button>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class="card">
+    <div class="card-header">
+      Login or Signup to Participate
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">You're missing out!</h5>
+      <p class="card-text">Click the button below to login or sign up today.</p>
+      <a
+        href="#"
+        class="btn btn-dark"
+        data-bs-toggle="modal"
+        data-bs-target="#login-modal"
+      >Let's go!</a>
+    </div>
+  </div>
+{{/if}}
+
+{{! Cards for Comments }}
+{{#each blogPost.comments as |data|}}
+  <div class="card my-2">
+    <div class="card-header">
+      <h5 class="card-title">{{user.username}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Posted on
+        {{toDate createdAt}}</h6>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{data.comment}}</p>
+    </div>
+    {{#if data.commentEdit}}
+      <div class="card-footer">
+        <button
+          data-commentid="{{data.id}}"
+          type="button"
+          class="editComment-btn btn btn-danger"
+          data-bs-target="#editComment-modal"
+          data-bs-toggle="modal"
+        >Edit</button>
+      </div>
+    {{/if}}
+  </div>
+{{/each}}
